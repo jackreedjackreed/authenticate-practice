@@ -20,17 +20,19 @@ mongoose.connect("mongodb+srv://jackr353:jackr353@project-3-cluster-jack.w6g2v.m
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(cors({
-    origin: "http://localhost: 3000", // <-- location of the react app
+app.use(
+    cors({
+    origin: "http://localhost:3000", // <-- location of the react app
     credentials: true
 }))
-app.use(session({
-    secret: "keyboard cat",
-    resave: true,
-    saveUninitialized: true
+app.use(
+    session({
+        secret: "secretcode",
+        resave: true,
+        saveUninitialized: true
 }))
 
-app.use(cookieParser("keyboard cat"))
+app.use(cookieParser("secretcode"))
 
 
 // Routes
