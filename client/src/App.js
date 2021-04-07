@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './App.css';
+import Axios from 'axios'
 
 function App() {
   const [registerUsername, setRegisterUsername] = useState("")
@@ -7,9 +8,36 @@ function App() {
   const [loginUsername, setLoginUsername] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
-  const register = () => {};
-  const login = () => {};
-  const getUser = () => {};
+  const register = () => {
+    Axios({
+      method: "POST",
+      data: {
+        username: registerUsername,
+        password: registeredPassword
+      },
+      withCredentials: true,
+      url: "http://localhost:4000/register"
+    }).then((res) => console.log(res));
+  };
+
+  const login = () => {
+    Axios({
+      method: "POST",
+      data: {
+        username: loginUsername,
+        password: loginPassword,
+      },
+      withCredentials: true,
+      url: "http://localhost:4000/login"
+    }).then((res) => console.log(res));
+  };
+  const getUser = () => {
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:4000/getUser"
+    }).then((res) => console.log(res));
+  };
 
   return (
     <div className="App">
