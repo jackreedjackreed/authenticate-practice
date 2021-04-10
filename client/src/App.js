@@ -41,6 +41,7 @@ function App() {
     setData(res.data);
     console.log(res.data);
   });
+}
 
   return (
     <div className="App">
@@ -68,7 +69,7 @@ function App() {
 
     </div>
   );
-}
+
 }
 
 export default App;
