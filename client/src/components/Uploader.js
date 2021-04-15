@@ -8,10 +8,18 @@ export default class Uploader extends Component {
 
   getImage = e => {
     const files = e.target.files;
+    console.log(files)
+    console.log(files[0])
     if (files && files.length > 0) {
       const file = files[0];
       this.setState({ file });
+      console.log("got the image")
     }
+    // const file = e.target.file
+    // this.setState({file});
+    // console.log("got the file and set that state")
+
+
   };
 
   uploadFile = e => {

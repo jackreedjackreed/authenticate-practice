@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './App.css';
 import Axios from 'axios'
 import Uploader from './components/Uploader'
-import DisplayImage from './components/Uploader'
+import DisplayImage from './components/DisplayImage'
 
 function App() {
   const [registerUsername, setRegisterUsername] = useState("")

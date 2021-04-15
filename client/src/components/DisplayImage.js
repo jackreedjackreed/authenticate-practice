@@ -34,6 +34,7 @@ export default class DisplayImage extends Component {
     return (
         // React.Fragment to return multiple elements from the componenet without adding more nodes to the DOM
       <React.Fragment>
+        <h1>YO00000000</h1>
         <h1>Retrieve Image from AWS S3 Bucket</h1>
         <form onSubmit={this.formHandler}>
           <label> Image name:</label>
