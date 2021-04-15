@@ -20,7 +20,7 @@ export default class Uploader extends Component {
     this.setState({message:'Uploading...'})
     const contentType = file.type; // eg. image/jpeg or image/svg+xml
 
-    const generatePutUrl = 'http://localhost:3500/generate-put-url';
+    const generatePutUrl = 'http://localhost:4000/generate-put-url';
     const options = {
       params: {
         Key: file.name,

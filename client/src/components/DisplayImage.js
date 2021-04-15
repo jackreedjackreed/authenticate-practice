@@ -8,7 +8,7 @@ export default class DisplayImage extends Component {
     e.preventDefault();
     this.setState({ message: 'Loading...' });
     const filename = document.querySelector('#filename').value;
-    const generateGetUrl = 'http://localhost:3500/generate-get-url';
+    const generateGetUrl = 'http://localhost:4000/generate-get-url';
     const options = {
       params: {
         Key: filename,
@@ -32,6 +32,7 @@ export default class DisplayImage extends Component {
   render() {
     const { getURL, message } = this.state;
     return (
+        // React.Fragment to return multiple elements from the componenet without adding more nodes to the DOM
       <React.Fragment>
         <h1>Retrieve Image from AWS S3 Bucket</h1>
         <form onSubmit={this.formHandler}>

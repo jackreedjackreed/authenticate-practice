@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import './App.css';
 import Axios from 'axios'
+import Uploader from './components/Uploader'
+import DisplayImage from './components/Uploader'
 
 function App() {
   const [registerUsername, setRegisterUsername] = useState("")
@@ -65,6 +67,12 @@ function App() {
         {
           data ? <h1>Welcome Back {data.username}</h1> : null
         }
+      </div>
+
+      <div>
+      <Uploader />
+      <hr/>
+      <DisplayImage />
       </div>
 
     </div>

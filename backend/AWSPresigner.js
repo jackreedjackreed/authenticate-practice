@@ -13,6 +13,7 @@ const s3 = new AWS.S3();
 
 // Retrieving the bucket name from env variable
 const Bucket = process.env.BUCKET_NAME;
+console.log("logged Bucket = " + Bucket)
 
 // In order to create pre-signed GET adn PUT URLs we use the AWS SDK s3.getSignedUrl method.
 // getSignedUrl(operation, params, callback) ⇒ String

@@ -9,7 +9,14 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const User = require("./user");
 const { Passport } = require("passport");
+
 const app = express();
+
+// Importing AWSPresigner
+const {
+    generateGetUrl,
+    generatePutUrl
+} = require('./AWSPresigner')
 
 mongoose.connect("mongodb+srv://jackr353:jackr353@project-3-cluster-jack.w6g2v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"), {
     useNewUrlParser: true,
@@ -43,7 +50,43 @@ require('./passportConfig')(passport);
 // END OF MIDDLEWARE ^
 
 
-// Routes
+
+// ----- Routes -----
+
+//UPLOAD IMAGE ROUTES
+// GET URL
+app.get('/generate-get-url', (req, res) => {
+    // Both Key and ContentType are defined in the client side.
+    // Key refers to the remote name of the file.
+    const { Key } = req.query;
+    generateGetUrl(Key)
+      .then(getURL => {      
+        res.send(getURL);
+      })
+      .catch(err => {
+        res.send(err);
+      });
+  });
+
+// PUT URL
+app.get('/generate-put-url', (req,res)=>{
+    // Both Key and ContentType are defined in the client side.
+    // Key refers to the remote name of the file.
+    // ContentType refers to the MIME content type, in this case image/jpeg
+    const { Key, ContentType } =  req.query;
+    generatePutUrl(Key, ContentType).then(putURL => {
+      res.send({putURL});
+    })
+    .catch(err => {
+      res.send(err);
+    });
+  });
+
+
+
+
+
+// LOGIN ROUTES
 app.post('/login', (req, res, next) => {
     console.log(req.body);
     passport.authenticate("local", (err, user, info) => {
