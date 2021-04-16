@@ -19,6 +19,8 @@ const {
     generatePutUrl
 } = require('./AWSPresigner')
 
+
+
 mongoose.connect("mongodb+srv://jackr353:jackr353@project-3-cluster-jack.w6g2v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"), {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -31,7 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(
     cors({
-    origin: "http://localhost:3000", // <-- location of the react app
+    origin: "http://localhost:3000" || "http://localhost:4000", // <-- location of the react app
     credentials: true
 }))
 app.use(
@@ -48,6 +50,9 @@ app.use(passport.session());
 // require this file and pass passport as a param
 require('./passportConfig')(passport);
 
+// app.use(express.json());
+// app.use(cors());
+
 // END OF MIDDLEWARE ^
 
 
@@ -55,44 +60,41 @@ require('./passportConfig')(passport);
 // ----- Routes -----
 
 //UPLOAD IMAGE ROUTES
-app.get('/s3Url', async (req, res) => {
-    const url = await generateUploadURL()
-    res.send({url})
+// app.get('/s3Url', async (req, res) => {
+//     const url = await generateUploadURL()
+//     res.send({url})
+//   });
+
+
+
+
+// GET URL
+app.get('/generate-get-url', (req, res) => {
+    // Both Key and ContentType are defined in the client side.
+    // Key refers to the remote name of the file.
+    const { Key } = req.query;
+    generateGetUrl(Key)
+      .then(getURL => {      
+        res.send(getURL);
+      })
+      .catch(err => {
+        res.send(err);
+      });
   });
 
-
-
-
-// // GET URL
-// app.get('/generate-get-url', (req, res) => {
-//     // Both Key and ContentType are defined in the client side.
-//     // Key refers to the remote name of the file.
-//     const { Key } = req.query;
-//     generateGetUrl(Key)
-//       .then(getURL => {      
-//         res.send(getURL);
-//       })
-//       .catch(err => {
-//         res.send(err);
-//       });
-//   });
-
-// // PUT URL
-// app.get('/generate-put-url', (req,res)=>{
-//     // Both Key and ContentType are defined in the client side.
-//     // Key refers to the remote name of the file.
-//     // ContentType refers to the MIME content type, in this case image/jpeg
-//     const { Key, ContentType } =  req.query;
-//     generatePutUrl(Key, ContentType).then(putURL => {
-//       res.send({putURL});
-//     })
-//     .catch(err => {
-//       res.send(err);
-//     });
-//   });
-
-
-
+// PUT URL
+app.get('/generate-put-url', (req,res)=>{
+    // Both Key and ContentType are defined in the client side.
+    // Key refers to the remote name of the file.
+    // ContentType refers to the MIME content type, in this case image/jpeg
+    const { Key, ContentType } =  req.query;
+    generatePutUrl(Key, ContentType).then(putURL => {
+      res.send({putURL});
+    })
+    .catch(err => {
+      res.send(err);
+    });
+  });
 
 
 // LOGIN ROUTES

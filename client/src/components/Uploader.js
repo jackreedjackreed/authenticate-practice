@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// import { generateUploadURL } from '../../../backend/s3'
+// import { UploadURL } from '../../../backend/s3'
+
 
 export default class Uploader extends Component {
   state = {
@@ -59,6 +62,34 @@ export default class Uploader extends Component {
     });
   };
 
+
+    // uploadFile = e => {
+    //     e.preventDefault();
+    //     const files = e.target.files;
+    //     console.log(files)
+    //     console.log(files[0])
+    //     const file = files[0]
+
+    //     // get secure url from the server
+    //     console.log(UploadURL);
+
+    //     //apost the image directly to the s3 bucket
+    //     // axios
+    //     // .put(
+            
+    //     // ) fetch(url, {
+    //     //     method: "PUT",
+    //     //     headers: {
+    //     //         "Content-Type": "multipart/form-data"
+    //     //     },
+    //     //     body: file
+    //     // });
+
+    //     const imageURL = url.split('?')[0]
+    //     console.log(imageURL)
+    // }
+
+
   render() {
     return (
       <React.Fragment>
@@ -69,7 +100,7 @@ export default class Uploader extends Component {
           accept='image/*'
           onChange={this.getImage}
         />
-        <p>{this.state.message}</p>
+        {/* <p>{this.state.message}</p> */}
         <form onSubmit={this.uploadFile}>
           <button id='file-upload-button'>Upload</button>
         </form>

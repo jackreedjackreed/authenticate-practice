@@ -3,8 +3,18 @@ import './App.css';
 import Axios from 'axios'
 import Uploader from './components/Uploader'
 import DisplayImage from './components/DisplayImage'
+// import s3 from '../../backend/s3'
 
 function App() {
+  // image stuff below
+  // app.get('s3Url', async (req, res) => {
+  //   const url = s3.generateUploadURL()
+  //   res.send({url})
+  // })
+
+
+
+  // login stuff below
   const [registerUsername, setRegisterUsername] = useState("")
   const [registeredPassword, setRegisterPassword] = useState('');
   const [loginUsername, setLoginUsername] = useState('');
