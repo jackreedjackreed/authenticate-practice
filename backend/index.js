@@ -10,6 +10,9 @@ const bodyParser = require("body-parser");
 const User = require("./user");
 const { Passport } = require("passport");
 const s3 = require("./s3")
+const ReactDom = require('react-dom');
+const ReactS3 = require('react-s3')
+
 
 const app = express();
 
