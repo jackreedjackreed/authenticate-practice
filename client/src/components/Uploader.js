@@ -4,6 +4,17 @@ import axios from 'axios';
 // import { UploadURL } from '../../../backend/s3'
 
 
+const ReactS3 = require('react-s3');
+console.log(ReactS3);
+require('dotenv').config(); // Loading dotenv to have access to env variables
+// 6-minute upload to react video
+const config = {
+  bucketName: process.env.BUCKET_NAME,
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: 'us-east-2'
+}
+
 export default class Uploader extends Component {
   state = {
     message:''
@@ -24,7 +35,23 @@ export default class Uploader extends Component {
 
 
   };
+// 6 minute video using ReactS3
+  // uploadFile = e => {
+  //   e.preventDefault();
+  //   const { file } = this.state;
+  //   console.log(file);
+  //   ReactS3.uploadFile (file , config)
+  //   .then( (data) => {
+  //     console.log(data)
+  //   })
+  //   .catch( (err) => {
+  //     alert(err);
+  //   })
+    // const { file } = this.state
+    
+  // }
 
+  // SOMETING THAT ALMOST WORKS EXCEPT FOR CORS
   uploadFile = e => {
     e.preventDefault();
     const { file } = this.state;

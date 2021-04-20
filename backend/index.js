@@ -10,8 +10,10 @@ const bodyParser = require("body-parser");
 const User = require("./user");
 const { Passport } = require("passport");
 const s3 = require("./s3")
-const ReactDom = require('react-dom');
+// const ReactDom = require('react-dom');
 const ReactS3 = require('react-s3')
+require('dotenv').config(); // Loading dotenv to have access to env variables
+
 
 
 const app = express();
@@ -69,7 +71,13 @@ require('./passportConfig')(passport);
 //   });
 
 
-
+// 6-minute upload to react video
+const config = {
+    bucketName: process.env.BUCKET_NAME,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: 'us-east-2'
+}
 
 // GET URL
 app.get('/generate-get-url', (req, res) => {
