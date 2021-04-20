@@ -80,7 +80,7 @@ app.get('/generate-get-url', (req, res) => {
       .catch(err => {
         res.send(err);
       });
-  });
+  });  
 
 // PUT URL
 app.get('/generate-put-url', (req,res)=>{
