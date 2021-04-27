@@ -1,5 +1,4 @@
 {
-  "proxy": "https://cat-fact.herokuapp.com/",
   "name": "backend",
   "version": "1.0.0",
   "description": "",
@@ -15,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.889.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^6.0.1",
@@ -22,6 +22,7 @@
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
     "express-session": "^1.17.1",
     "mongoose": "^5.12.3",
     "nodemon": "^2.0.7",
